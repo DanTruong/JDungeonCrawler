@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Sector class. Holds reference to the physical location that Entities will be
+ * Holds reference to the physical location that Entities will be
  * residing in.
  *
  * @author Daniel Truong

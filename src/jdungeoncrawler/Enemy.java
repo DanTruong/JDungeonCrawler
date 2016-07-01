@@ -24,28 +24,32 @@
 package jdungeoncrawler;
 
 /**
+ * Opposing Entity object.
  *
  * @author Daniel Truong
  */
 public class Enemy extends Entity {
 
     /**
-     * 
-     * @param name
-     * @param description 
+     * Enemy class constructor.
+     *
+     * @param name Name given to the Enemy.
+     * @param description Description given to the Enemy.
      */
     public Enemy(String name, String description) {
         super(name, description);
     }
 
     /**
-     * 
-     * @param clean
-     * @param player 
+     * Reacts to Player's action to heat the Sector. Decreases Player's respect
+     * if the room temperature was increased, increases otherwise.
+     *
+     * @param clean True if the Player heated the room, False otherwise.
+     * @param player Player Entity being affected.
      */
     @Override
     public void react(boolean clean, Player player) {
-        if(!clean){
+        if (!clean) {
             player.increaseRespect();
         } else {
             player.descreaseRespect();

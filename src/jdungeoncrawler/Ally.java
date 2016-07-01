@@ -24,28 +24,32 @@
 package jdungeoncrawler;
 
 /**
+ * Ally Entity object.
  *
  * @author Daniel Truong
  */
 public class Ally extends Entity {
 
     /**
-     * 
-     * @param name
-     * @param description 
+     * Ally class constructor.
+     *
+     * @param name Name given to the Ally.
+     * @param description Description given to the Ally.
      */
     public Ally(String name, String description) {
         super(name, description);
     }
 
     /**
-     * 
-     * @param clean
-     * @param player 
+     * Reacts to Player's action to heat the Sector. Increases Player's respect
+     * if the room temperature was increased, decreases otherwise.
+     *
+     * @param heat True if the Player heated the room, False otherwise.
+     * @param player Player Entity being affected.
      */
     @Override
-    public void react(boolean clean, Player player) {
-        if(clean){
+    public void react(boolean heat, Player player) {
+        if (heat) {
             player.increaseRespect();
         } else {
             player.descreaseRespect();

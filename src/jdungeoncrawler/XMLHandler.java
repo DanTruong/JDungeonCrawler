@@ -28,8 +28,7 @@ import org.xml.sax.*;
 import java.util.ArrayList;
 
 /**
- * XMLHandler class. Processes the XML game data file and creates the game from
- * it.
+ * Processes the XML game data file and creates the game from it.
  *
  * @author Daniel Truong
  */

@@ -26,15 +26,17 @@ package jdungeoncrawler;
 import java.util.Scanner;
 
 /**
+ * Controllable Entity object.
  *
  * @author Daniel Truong
  */
 public class Player extends Entity {
 
     /**
-     * 
-     * @param name
-     * @param description 
+     * Player class constructor.
+     *
+     * @param name Name given to the Player.
+     * @param description Description given to the Player.
      */
     public Player(String name, String description) {
         super(name, description);
@@ -42,22 +44,23 @@ public class Player extends Entity {
     }
 
     /**
-     * 
+     * Decreases Player's respect level by one point.
      */
     public void descreaseRespect() {
         respect -= 1;
     }
 
     /**
-     * 
+     * Increases Player's respect level by one point.
      */
     public void increaseRespect() {
         respect += 1;
     }
 
     /**
-     * 
-     * @param sc 
+     * Executes the gameplay, allowing the Player entity to parse user input.
+     *
+     * @param sc Scanner object to take in user commands.
      */
     public void play(Scanner sc) {
         String command = "";
@@ -97,33 +100,39 @@ public class Player extends Entity {
     }
 
     /**
-     * 
+     * Abstract method from the Entity class. Does not apply to Player class. Do
+     * not use.
+     *
      * @param clean
-     * @param player 
+     * @param player
      */
     @Override
     public void react(boolean clean, Player player) {
     }
 
     /**
-     * 
-     * @return 
+     * Returns the Player's respect levels.
+     *
+     * @return Player's respect.
      */
     public int getRespect() {
         return respect;
     }
 
     /**
-     * 
-     * @return 
+     * Returns a list of commands that the user can parse.
+     *
+     * @return Help Commands.
      */
     private String helpCommands() {
         return "Show help commands here";
     }
 
     /**
-     * 
-     * @return 
+     * Returns current information about the Sector that the Player is in (other
+     * Entities, the Sector's name and description, it's state, etc.).
+     *
+     * @return Sector information.
      */
     private String sectorInfo() {
         String info = "Current Room: " + getCurrentSector()
@@ -147,7 +156,7 @@ public class Player extends Entity {
     }
 
     /**
-     * 
+     * Player's respect level.
      */
     private int respect;
 }

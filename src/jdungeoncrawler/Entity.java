@@ -24,8 +24,8 @@
 package jdungeoncrawler;
 
 /**
- * Entity class. Holds reference to live cast (Ally, Enemy, Player) that will
- * interact with the game world.
+ * Holds reference to live cast (Ally, Enemy, Player) that will interact with
+ * the game world.
  *
  * @author Daniel Truong
  */
