@@ -24,23 +24,26 @@
 package jdungeoncrawler;
 
 /**
+ * Entity class. Holds reference to live cast (Ally, Enemy, Player) that will
+ * interact with the game world.
  *
  * @author Daniel Truong
  */
 public abstract class Entity {
 
     /**
-     * 
-     * @param name
-     * @param description 
+     * Entity class constructor.
+     *
+     * @param name Name given to the Entity.
+     * @param description Description given to the Entity.
      */
     public Entity(String name, String description) {
         this.name = name;
         this.description = description;
     }
-    
+
     /**
-     * 
+     * Orders Entity to attempt to move to a random neighboring Sector.
      */
     public void attemptMove() {
         int randomNumber = (int) (Math.random() * 4);
@@ -73,12 +76,13 @@ public abstract class Entity {
     }
 
     /**
-     * 
-     * @param player 
+     * Increase the temperature of the Sector (if it's not already hot).
+     *
+     * @param player Player object that will be affected.
      */
     public void heatSector(Player player) {
         if (getCurrentSector().getState() < 4) {
-            getCurrentSector().increaseRoomTemp();
+            getCurrentSector().increaseTemp();
             for (int i = 0; i < getCurrentSector().getEntities().size(); i++) {
                 getCurrentSector().getEntities().get(i).react(true, player);
             }
@@ -86,70 +90,79 @@ public abstract class Entity {
     }
 
     /**
-     * 
-     * @param player 
+     * Decrease the temperature of the Sector (if it's not already cold).
+     *
+     * @param player Player object that will be affected.
      */
     public void coolSector(Player player) {
         if (getCurrentSector().getState() > 1) {
-            getCurrentSector().decreaseRoomTemp();
+            getCurrentSector().decreaseTemp();
             for (int i = 0; i < getCurrentSector().getEntities().size(); i++) {
                 getCurrentSector().getEntities().get(i).react(false, player);
             }
         }
-    } 
+    }
 
     /**
-     * 
-     * @param nextSector 
+     * Moves Entity to a new Sector.
+     *
+     * @param nextSector Sector the Entity will move to next.
      */
     public void move(Sector nextSector) {
         nextSector.addEntity(this);
         getCurrentSector().removeEntity(this);
         setCurrentSector(nextSector);
     }
-    
+
     /**
-     * 
-     * @param currentSector 
+     * Sets the Sector reference for the Entity object.
+     *
+     * @param currentSector Sector the Entity will be in.
      */
     public void setCurrentSector(Sector currentSector) {
         this.currentSector = currentSector;
     }
-    
+
     /**
-     * 
-     * @param heat
-     * @param player 
+     * Define reactions for each subclass (Ally, Enemy, Player)
+     *
+     * @param heat True, if the Entity initiated the heating action.
+     * @param player Player object that will be affected.
      */
     public abstract void react(boolean heat, Player player);
 
     /**
-     * 
-     * @return 
+     * Return the Sector that the Entity is currently in.
+     *
+     * @return Sector's Entity.
      */
     public Sector getCurrentSector() {
         return currentSector;
     }
-    
+
     /**
-     * 
-     * @return 
+     * Returns the description of the Entity.
+     *
+     * @return Entity description.
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * 
-     * @return 
+     * Returns the name of the Sector.
+     *
+     * @return Enemy name.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * 
-     * @return 
+     * Returns the name of the Entity and the corresponding subclass (Overrides
+     * class implementation of the toString() method.
+     *
+     * @return Name of Entity and Subclass.
      */
     @Override
     public String toString() {
@@ -157,17 +170,17 @@ public abstract class Entity {
     }
 
     /**
-     * 
+     * String description of the Entity.
      */
     private final String description;
-    
+
     /**
-     * 
+     * String name of the Entity.
      */
     private final String name;
-    
+
     /**
-     * 
+     * Sector the Entity is in.
      */
     private Sector currentSector;
 }

@@ -27,31 +27,37 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
+ * Sector class. Holds reference to the physical location that Entities will be
+ * residing in.
  *
  * @author Daniel Truong
  */
 public class Sector {
 
     /**
+     * Sector class constructor.
      *
-     * @param name
-     * @param description
-     * @param state
+     * @param name Name of the Sector.
+     * @param description Description of the Sector.
+     * @param state Numerical representation of the Sector's temperature (0 =
+     * Cold, 1 = Cool, 2 = Warm, 3 = Hot).
      */
     public Sector(String name, String description, int state) {
         this.name = name;
         this.description = description;
-        this.state = state;
+        this.temperature = state;
         entities = new ArrayList();
         neighbors = new HashMap();
     }
 
     /**
+     * Executes the Quicksort algorithm on the Entity ArrayList in the Sector
+     * object.
      *
-     * @param low
-     * @param high
+     * @param low Left-most index of the Entity ArrayList.
+     * @param high Right-most index of the Entity ArrayList.
      */
-    private void executeQuickSort(int low, int high) {
+    private void executeQuicksort(int low, int high) {
         int qsValues[] = {low, high, low + (high - low) / 2};
         /*
         qsValues[0] = Lower-most index
@@ -76,25 +82,27 @@ public class Sector {
             }
         }
         if (low < qsValues[1]) {
-            executeQuickSort(low, qsValues[1]);
+            executeQuicksort(low, qsValues[1]);
         }
         if (qsValues[0] < high) {
-            executeQuickSort(qsValues[0], high);
+            executeQuicksort(qsValues[0], high);
         }
     }
 
     /**
-     *
+     * Calls upon a sorting algorithm to sort the Sector's Entity ArrayList.
      */
     private void sortEntities() {
         if (entities.size() > 1) {
-            executeQuickSort(0, entities.size() - 1);
+            executeQuicksort(0, entities.size() - 1);
         }
     }
 
     /**
+     * Adds an Entity to the Sector (if the ArrayList is no bigger than 10
+     * elements.
      *
-     * @param entity
+     * @param entity Entity object to add to the Sector.
      */
     public void addEntity(Entity entity) {
         if (entities.size() <= 10) {
@@ -104,31 +112,34 @@ public class Sector {
     }
 
     /**
-     *
+     * Decrease the temperature of the Sector.
      */
-    public void decreaseRoomTemp() {
-        state -= 1;
+    public void decreaseTemp() {
+        temperature -= 1;
     }
 
     /**
-     *
+     * Increase the temperature of the Sector.
      */
-    public void increaseRoomTemp() {
-        state += 1;
+    public void increaseTemp() {
+        temperature += 1;
     }
 
     /**
+     * Remove Entity object from the Sector.
      *
-     * @param entity
+     * @param entity Entity to remove.
      */
     public void removeEntity(Entity entity) {
         entities.remove(entity);
     }
 
     /**
+     * Sets reference to neighbors of the current Sector.
      *
-     * @param direction
-     * @param sector
+     * @param direction Numerical representation of the direction (0 = north, 1
+     * = south, 2 = east, 3 = west).
+     * @param sector Sector to set as neighbor.
      */
     public void setNeighbor(int direction, Sector sector) {
         switch (direction) {
@@ -148,49 +159,56 @@ public class Sector {
     }
 
     /**
+     * Returns the ArrayList of Entities in the Sector.
      *
-     * @return
+     * @return List of Entities in the Sector.
      */
     public ArrayList<Entity> getEntities() {
         return entities;
     }
 
     /**
+     * Returns the temperature of the Sector.
      *
-     * @return
+     * @return Sector temperature.
      */
     public int getState() {
-        return state;
+        return temperature;
     }
 
     /**
+     * Returns a neighbor of the Sector (based on direction).
      *
-     * @param direction
-     * @return
+     * @param direction Direction of the neighbor (north, south, east, west).
+     * @return Sector object at specified direction.
      */
     public Sector getNeighbor(String direction) {
         return neighbors.get(direction);
     }
 
     /**
+     * Returns the description of the Sector.
      *
-     * @return
+     * @return Sector description.
      */
     public String getDescription() {
         return description;
     }
 
     /**
+     * Returns the name of the Sector.
      *
-     * @return
+     * @return Sector name.
      */
     public String getName() {
         return name;
     }
 
     /**
+     * Returns the name of the Sector (Overrides class implementation of the
+     * toString() method.
      *
-     * @return
+     * @return Sector name.
      */
     @Override
     public String toString() {
@@ -198,27 +216,27 @@ public class Sector {
     }
 
     /**
-     *
+     * List of Entities to be stored in Sector.
      */
     private final ArrayList<Entity> entities;
 
     /**
-     *
+     * HashMap reference for directions of neighboring sectors.
      */
     private final HashMap<String, Sector> neighbors;
 
     /**
-     *
+     * Temperature of the Sector (0 = cold, 1 = cool, 2 = warm, 3 = hot).
      */
-    private int state;
+    private int temperature;
 
     /**
-     *
+     * String description of the Sector.
      */
     private final String description;
 
     /**
-     *
+     * String name of the Sector.
      */
     private final String name;
 }

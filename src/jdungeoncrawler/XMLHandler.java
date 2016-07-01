@@ -28,13 +28,15 @@ import org.xml.sax.*;
 import java.util.ArrayList;
 
 /**
+ * XMLHandler class. Processes the XML game data file and creates the game from
+ * it.
  *
  * @author Daniel Truong
  */
 public class XMLHandler extends DefaultHandler {
 
     /**
-     *
+     * XMLHandler class constructor.
      */
     public XMLHandler() {
         sectorList = new ArrayList();
@@ -42,9 +44,10 @@ public class XMLHandler extends DefaultHandler {
     }
 
     /**
+     * Executes the Quicksort algorithm on the Sector ArrayList.
      *
-     * @param low
-     * @param high
+     * @param low Left-most index of the Entity ArrayList.
+     * @param high Right-most index of the Entity ArrayList.
      */
     private void executeQuickSort(int low, int high) {
         int qsValues[] = {low, high, low + (high - low) / 2};
@@ -79,7 +82,7 @@ public class XMLHandler extends DefaultHandler {
     }
 
     /**
-     *
+     * Calls upon a sorting algorithm to sort the Sector ArrayList.
      */
     private void sortSectors() {
         if (sectorList.size() > 1) {
@@ -88,10 +91,11 @@ public class XMLHandler extends DefaultHandler {
     }
 
     /**
+     * Creates Entity object to be added to the Sector.
      *
-     * @param qName
-     * @param name
-     * @param description
+     * @param qName Type of Entity (Ally, Enemy, Player).
+     * @param name Entity name.
+     * @param description Entity description.
      */
     public void createEntity(String qName, String name, String description) {
         Entity entity = null;
@@ -112,11 +116,12 @@ public class XMLHandler extends DefaultHandler {
     }
 
     /**
+     * Creates the Sector object comprising the game world.
      *
-     * @param name
-     * @param description
-     * @param state
-     * @param directions
+     * @param name Sector name.
+     * @param description Sector description.
+     * @param state String representation of Sector's temperature.
+     * @param directions Neighbors of the Sector.
      */
     public void createSector(String name, String description, String state,
             String[] directions) {
@@ -137,14 +142,17 @@ public class XMLHandler extends DefaultHandler {
     }
 
     /**
+     * Sets the local Player variable to the Player Entity found by the XML
+     * Handler.
      *
-     * @param player
+     * @param player Entity object labeled as the player.
      */
     public void setPlayer(Entity player) {
         this.player = (Player) player;
     }
 
     /**
+     * Read in the XML file and call methods to process XML info.
      *
      * @param uri
      * @param localName
@@ -175,9 +183,10 @@ public class XMLHandler extends DefaultHandler {
     }
 
     /**
+     * Returns numerical representation of neighbor direction.
      *
-     * @param direction
-     * @return
+     * @param direction Numerical representation of direction.
+     * @return Integer that corresponds to opposite direction.
      */
     private int oppositeDirection(int direction) {
         switch (direction) {
@@ -193,9 +202,12 @@ public class XMLHandler extends DefaultHandler {
     }
 
     /**
+     * Converts string temperature representation to numerical representation.
      *
-     * @param state
-     * @return
+     * @param state String representation of temperature (hot, warm, cool,
+     * cold).
+     * @return Numerical representation of temperature (0 = cold, 1 = cool, 2 =
+     * warm, 3 = hot).
      */
     private int sectorState(String state) {
         switch (state) {
@@ -211,9 +223,11 @@ public class XMLHandler extends DefaultHandler {
     }
 
     /**
+     * Finds (via linear search algorithm) and returns a Sector from string
+     * query.
      *
-     * @param name
-     * @return
+     * @param name String query of Sector name.
+     * @return Sector that is found (null if not).
      */
     private Sector findSector(String name) {
         Sector match = null;
@@ -226,25 +240,26 @@ public class XMLHandler extends DefaultHandler {
     }
 
     /**
+     * Returns playable entity object.
      *
-     * @return
+     * @return Player entity.
      */
     public Player getPlayer() {
         return player;
     }
 
     /**
-     *
+     * List of Sectors comprising the game world.
      */
     private final ArrayList<Sector> sectorList;
 
     /**
-     *
+     * Player entity object.
      */
     private Player player;
 
     /**
-     *
+     * The current Sector being created and having neighbors added to it.
      */
     private Sector sector;
 
