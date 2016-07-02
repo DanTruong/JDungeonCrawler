@@ -27,8 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Holds reference to the physical location that Entities will be
- * residing in.
+ * Holds reference to the physical location that Entities will be residing in.
  *
  * @author Daniel Truong
  */
@@ -202,6 +201,24 @@ public class Sector {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Returns string representation of temperature.
+     *
+     * @return Current temperature of the Sector.
+     */
+    public String getTemperature() {
+        switch (temperature) {
+            case 3:
+                return "hot";
+            case 2:
+                return "warm";
+            case 1:
+                return "cool";
+            default:
+                return "cold";
+        }
     }
 
     /**

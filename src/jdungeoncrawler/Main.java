@@ -31,6 +31,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
 
 /**
+ * Main class to execute the program.
  *
  * @author Daniel Truong
  */

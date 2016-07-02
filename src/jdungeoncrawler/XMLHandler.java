@@ -211,13 +211,13 @@ public class XMLHandler extends DefaultHandler {
     private int sectorState(String state) {
         switch (state) {
             case "hot":
-                return 4;
-            case "warm":
                 return 3;
-            case "cool":
+            case "warm":
                 return 2;
-            default:
+            case "cool":
                 return 1;
+            default:
+                return 0;
         }
     }
 

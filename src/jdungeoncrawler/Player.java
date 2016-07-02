@@ -65,7 +65,8 @@ public class Player extends Entity {
     public void play(Scanner sc) {
         String command = "";
         while (!command.equalsIgnoreCase("quit")) {
-            System.out.println("Enter a command: ");
+            System.out.print("Enter a command (type \"help\" for a list of "
+                    + "commands): ");
             command = sc.next();
             switch (command) {
                 case "north":
@@ -135,23 +136,34 @@ public class Player extends Entity {
      * @return Sector information.
      */
     private String sectorInfo() {
-        String info = "Current Room: " + getCurrentSector()
-                + "\nDescription: " + getCurrentSector().getDescription()
-                + "\nState: " + getCurrentSector().getState()
-                + "\nCurrent Respect: " + getRespect() + "\n\n";
+        String info = "You are in the " + getCurrentSector() + ". It is "
+                + getCurrentSector().getDescription() + ". It feels "
+                + getCurrentSector().getTemperature() + " in here.";
         if (getCurrentSector().getNeighbor("north") != null) {
-            info += "\nNorth: " + getCurrentSector().getNeighbor("north");
+            info += "\nTo the North is the " + getCurrentSector().
+                    getNeighbor("north");
         }
         if (getCurrentSector().getNeighbor("south") != null) {
-            info += "\nSouth: " + getCurrentSector().getNeighbor("south");
+            info += "\nTo the South is the " + getCurrentSector().
+                    getNeighbor("south");
         }
         if (getCurrentSector().getNeighbor("east") != null) {
-            info += "\nEast: " + getCurrentSector().getNeighbor("east");
+            info += "\nTo the East is the " + getCurrentSector().
+                    getNeighbor("east");
         }
         if (getCurrentSector().getNeighbor("west") != null) {
-            info += "\nWest: " + getCurrentSector().getNeighbor("west");
+            info += "\nTo the West is the " + getCurrentSector().
+                    getNeighbor("west");
         }
-        info += "\n\nCreatures: " + getCurrentSector().getEntities();
+        info += "\n\nYour current respect level is " + getRespect() + ". The "
+                + "current entities are in the sector\n";
+
+        for (int i = 0; i < getCurrentSector().getEntities().size(); i++) {
+            if (!getCurrentSector().getEntities().get(i).toString()
+                    .equals(this.toString())) {
+                info += "-" + getCurrentSector().getEntities().get(i) + "\n";
+            }
+        }
         return info;
     }
 

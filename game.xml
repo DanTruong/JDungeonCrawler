@@ -1,36 +1,36 @@
 <xml version="1.0" encoding="UTF-8">
-	<sector name="Living Room" description="Place to watch TV and relax." state="warm" north="Master Bedroom" south="Front Porch" east="Kitchen" west="Hallway">
+	<sector name="Living Room" description="where you can watch TV and relax" state="warm" north="Master Bedroom" south="Front Porch" east="Kitchen" west="Hallway">
 		<ally name="Bill" description="Likes to watch football on the TV." />
 		<ally name="Steve" description="Enjoys watching action films in the player's living room." />
 	</sector>
-	<sector name="Master Bedroom" description="The main homeowner sleeps here." state="cool" south="Living Room" east="Main Bathroom">
+	<sector name="Master Bedroom" description="where the main homeowner sleeps" state="cool" south="Living Room" east="Main Bathroom">
 		<enemy name="House Fly #5" description="An annoying fly that likes to buzz around pungent areas." />
 	</sector>
-	<sector name="Junior Bedroom 1" description="Bedroom for either a kid or a guest." state="cold" south="Hallway"></sector>
-	<sector name="Junior Bedroom 2" description="Another place for kids or guests to sleep." state="cold" east="Hallway"></sector>
-	<sector name="Hallway" description="Connecting corridor between the bathrooms and bedrooms." state="cool" north="Junior Bedroom 1" south="Small Bathroom" east="Living Room" west="Junior Bedroom 2">
+	<sector name="Junior Bedroom 1" description="a bedroom for either a kid or a guest" state="cold" south="Hallway"></sector>
+	<sector name="Junior Bedroom 2" description="another place for kids or guests to sleep" state="cold" east="Hallway"></sector>
+	<sector name="Hallway" description="a connecting corridor between the bathrooms and bedrooms" state="cool" north="Junior Bedroom 1" south="Small Bathroom" east="Living Room" west="Junior Bedroom 2">
 		<ally name="Whiskers" description="The player's timid cat." />
 	</sector>
-	<sector name="Kitchen" description="Where food is prepared and stored." state="hot" south="Dining Room" east="Garage" west="Living Room">
+	<sector name="Kitchen" description="where food is prepared and stored" state="hot" south="Dining Room" east="Garage" west="Living Room">
 		<player name="Player" description="The owner of this awesome house." />
 		<enemy name="House Fly #6" description="An annoying fly that likes to buzz around pungent areas." />
 	</sector>
-	<sector name="Dining Room" description="Where food is eaten and guests are entertained." state="hot" north="Kitchen">
+	<sector name="Dining Room" description="where food is eaten and guests are entertained" state="hot" north="Kitchen">
 		<ally name="Marissa" description="Likes to setup card games in the dining room." />
 	</sector>
-	<sector name="Main Bathroom" description="The bathroom attached to the main bedroom." state="warm" west="Master Bedroom">
+	<sector name="Main Bathroom" description="the bathroom attached to the main bedroom" state="warm" west="Master Bedroom">
 		<ally name="Spot" description="The player's joyful dog." />
 	</sector>
-	<sector name="Small Bathroom" description="The bathroom located in the hallway." state="cold" north="Hallway">
+	<sector name="Small Bathroom" description="the bathroom located in the hallway" state="cold" north="Hallway">
 		<enemy name="House Fly #1" description="An annoying fly that likes to buzz around pungent areas." />
 		<enemy name="House Fly #2" description="An annoying fly that likes to buzz around pungent areas." />
 		<enemy name="House Fly #3" description="An annoying fly that likes to buzz around pungent areas." />
 		<enemy name="House Fly #4" description="An annoying fly that likes to buzz around pungent areas." />
 	</sector>
-	<sector name="Front Porch" description="Entrance to the house." state="hot" north="Living Room">
+	<sector name="Front Porch" description="the entrance to the house" state="hot" north="Living Room">
 		<enemy name="Wasp" description="Dangerous insect whose sting can hurt." />
 	</sector>
-	<sector name="Garage" description="Place where vehicles and tools are stored." state="hot" west="Kitchen">
+	<sector name="Garage" description="the area where vehicles and tools are stored" state="hot" west="Kitchen">
 		<ally name="Elon" description="Enjoys working on vehicles and upgrading them." />
 		<enemy name="Rat #1" description="An annoying rat that likes to get into crevices scurry around." />
 		<enemy name="Rat #2" description="An annoying rat that likes to get into crevices scurry around." />
