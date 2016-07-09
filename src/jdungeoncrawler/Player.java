@@ -126,7 +126,16 @@ public class Player extends Entity {
      * @return Help Commands.
      */
     private String helpCommands() {
-        return "Show help commands here";
+        String help = "Commands are case-sensitive\n\n"
+                + "north: Moves your character to the Sector in the North\n"
+                + "south: Moves your character to the Sector in the South\n"
+                + "east: Moves your character to the Sector in the East\n"
+                + "west: Moves your character to the Sector in the West\n"
+                + "heat: Makes the current Sector hotter\n"
+                + "cool: Makes the current Sector cooler\n"
+                + "look: Look at current information about the Sector\n"
+                + "quit: Quit the game\n";
+        return help;
     }
 
     /**
